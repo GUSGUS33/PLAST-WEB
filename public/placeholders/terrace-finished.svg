@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="Terraza terminada">
+  <rect width="900" height="900" fill="#e2e8f0"/>
+  <g fill="#cbd5e1" stroke="#64748b" stroke-width="5">
+    <rect x="60" y="360" width="190" height="140"/>
+    <rect x="270" y="360" width="190" height="140"/>
+    <rect x="480" y="360" width="190" height="140"/>
+    <rect x="165" y="520" width="190" height="140"/>
+    <rect x="375" y="520" width="190" height="140"/>
+    <rect x="585" y="520" width="190" height="140"/>
+  </g>
+  <rect x="610" y="180" width="190" height="90" rx="18" fill="#2563eb"/>
+  <text x="70" y="155" fill="#1e293b" font-family="system-ui, sans-serif" font-size="46" font-weight="700">Obra terminada</text>
+</svg>

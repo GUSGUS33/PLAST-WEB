@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Instalación de terraza con piso elevado">
+  <rect width="1200" height="800" fill="#e2e8f0"/>
+  <rect y="500" width="1200" height="300" fill="#94a3b8"/>
+  <g fill="#cbd5e1" stroke="#64748b" stroke-width="6">
+    <rect x="120" y="430" width="210" height="140"/>
+    <rect x="350" y="430" width="210" height="140"/>
+    <rect x="580" y="430" width="210" height="140"/>
+    <rect x="810" y="430" width="210" height="140"/>
+    <rect x="235" y="590" width="210" height="140"/>
+    <rect x="465" y="590" width="210" height="140"/>
+    <rect x="695" y="590" width="210" height="140"/>
+  </g>
+  <g fill="#2563eb">
+    <circle cx="340" cy="575" r="22"/>
+    <circle cx="570" cy="575" r="22"/>
+    <circle cx="800" cy="575" r="22"/>
+  </g>
+  <text x="80" y="130" fill="#1e293b" font-family="system-ui, sans-serif" font-size="54" font-weight="700">PLASTEM</text>
+  <text x="80" y="190" fill="#475569" font-family="system-ui, sans-serif" font-size="32">Sistema de piso elevado</text>
+</svg>
