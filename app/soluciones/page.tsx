@@ -3,11 +3,13 @@ import { solutions } from '@/data/solutions';
 import { segments } from '@/data/segments';
 import { Lightbulb, ArrowRight, ShieldCheck, Zap, Droplets, Ruler, Users, Factory, BadgeCheck, Calculator } from 'lucide-react';
 import { Metadata } from 'next';
-import { whatsappUrl } from '@/data/site';
 
 export const metadata: Metadata = {
   title: 'Soluciones Constructivas para Terrazas y Balcones | PLASTEM',
   description: 'Descubra cómo resolver problemas de filtraciones, nivelación y transitabilidad en cubiertas. Soluciones técnicas para arquitectos, constructoras y particulares en Argentina.',
+  alternates: {
+    canonical: '/soluciones',
+  },
 };
 
 export default function SolucionesPage() {
@@ -200,8 +202,8 @@ export default function SolucionesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <Link 
-                href={whatsappUrl()} 
-                target="_blank" rel="noopener noreferrer"
+                href="https://wa.me/5491130213258" 
+                target="_blank"
                 className="px-10 py-5 bg-white text-slate-900 rounded-2xl font-black uppercase tracking-widest hover:bg-slate-100 transition-all shadow-xl text-center"
               >
                 Consultar vía WhatsApp

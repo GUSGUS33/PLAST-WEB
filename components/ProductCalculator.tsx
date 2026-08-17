@@ -3,13 +3,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Phone } from 'lucide-react';
-import { siteConfig, whatsappUrl } from '@/data/site';
 
 interface Props {
   theme?: 'dark' | 'light';
+  defaultCity?: string;
 }
 
-export function ProductCalculator({ theme = 'dark' }: Props) {
+export function ProductCalculator({ theme = 'dark', defaultCity = '' }: Props) {
   const [m2, setM2] = useState('');
   const [size, setSize] = useState('40x40');
   const [result, setResult] = useState<number | null>(null);
@@ -18,7 +18,7 @@ export function ProductCalculator({ theme = 'dark' }: Props) {
   // Form states
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState(defaultCity);
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -56,24 +56,28 @@ export function ProductCalculator({ theme = 'dark' }: Props) {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.open(whatsappCotizar, '_blank', 'noopener,noreferrer');
+    // In a real app this would call an API to save the lead
     setSubmitted(true);
   };
 
-  let whatsappCotizar = whatsappUrl('Hola, quiero pedir presupuesto.');
-  const normalizedM2 = m2.trim().replace(',', '.');
-  if (result && parseFloat(normalizedM2) > 0) {
+  const basePhone = "5491130213258";
+  
+  const activeCity = city || defaultCity;
+  const baseWaText = activeCity 
+    ? `Hola PLASTEM, quiero pedir presupuesto y consultar envío a ${activeCity}.` 
+    : `Hola, quiero pedir presupuesto.`;
+  let whatsappCotizar = `https://wa.me/${basePhone}?text=${encodeURIComponent(baseWaText)}`;
+  
+  if (result && parseFloat(m2) > 0) {
     const textparts = [
-      `Hola, usé la calculadora de su web.`,
-      `Tengo ${m2}m² con baldosas de ${size}. Según el cálculo necesito aprox ${result} discos.`,
+      `Hola PLASTEM, usé la calculadora de su web.`,
+      `Tengo ${m2}m² con baldosas de ${size}${activeCity ? ` para un proyecto en ${activeCity}` : ''}.`,
+      `Según el cálculo necesito aprox ${result} discos soporte.`,
       name ? `Mi nombre es ${name}.` : '',
-      phone ? `Mi WhatsApp es ${phone}.` : '',
-      city ? `Soy de ${city}.` : '',
-      email ? `Mi email es ${email}.` : '',
-      `¿Me pasarían presupuesto formal y costo de envío?`
+      `¿Me pasarían presupuesto formal y costo de envío${activeCity ? ` a ${activeCity}` : ''}?`
     ].filter(Boolean).join(' ');
     
-    whatsappCotizar = whatsappUrl(textparts);
+    whatsappCotizar = `https://wa.me/${basePhone}?text=${encodeURIComponent(textparts)}`;
   }
 
   const isLight = theme === 'light';
@@ -135,8 +139,8 @@ export function ProductCalculator({ theme = 'dark' }: Props) {
           
           {submitted ? (
              <div className="text-center py-6">
-                <p className={`font-bold mb-2 ${isLight ? 'text-green-600' : 'text-green-400'}`}>Abrimos WhatsApp con tu consulta lista.</p>
-                <p className={`text-sm ${isLight ? 'text-slate-600' : 'text-slate-300'}`}>Enviá el mensaje a {siteConfig.phone.display} para que podamos responderte con la cotización exacta.</p>
+                <p className={`font-bold mb-2 ${isLight ? 'text-green-600' : 'text-green-400'}`}>¡Solicitud enviada con éxito!</p>
+                <p className={`text-sm ${isLight ? 'text-slate-600' : 'text-slate-300'}`}>Un asesor se contactará a la brevedad con tu cotización exacta y opciones de envío.</p>
              </div>
           ) : (
             <div>
@@ -188,7 +192,6 @@ export function ProductCalculator({ theme = 'dark' }: Props) {
                   <Link 
                     href={whatsappCotizar} 
                     target="_blank" 
-                    rel="noopener noreferrer"
                     className="inline-flex w-full items-center justify-center gap-2 py-3.5 bg-[#25D366] text-white rounded-xl text-sm font-bold uppercase tracking-widest hover:bg-green-600 transition-all shadow-lg hover:shadow-green-500/20"
                   >
                     <Phone className="w-4 h-4" /> Hablar por WhatsApp
@@ -202,3 +205,4 @@ export function ProductCalculator({ theme = 'dark' }: Props) {
     </div>
   );
 }
+

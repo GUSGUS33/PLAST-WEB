@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
-import { siteConfig } from '@/data/site';
 
 export const metadata: Metadata = {
   title: 'Políticas de Privacidad | PLASTEM',
   description: 'Información sobre el tratamiento de datos personales y condiciones de uso del sitio web de PLASTEM.',
+  alternates: {
+    canonical: '/privacidad',
+  },
 };
 
 export default function PrivacidadPage() {
@@ -38,7 +40,7 @@ export default function PrivacidadPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-800 mb-3">4. Derechos del Usuario</h2>
               <p>
-                Usted tiene derecho a solicitar la eliminación de sus datos de contacto de nuestra base de datos enviando un email a {siteConfig.email}.
+                Usted tiene derecho a solicitar la eliminación de sus datos de contacto de nuestra base de datos enviando un email a ventas@plastem.com.ar.
               </p>
             </section>
 

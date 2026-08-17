@@ -1,0 +1,6 @@
+{
+  "name": "PLASTEM - Discos Soporte para Baldosones",
+  "description": "Fabricación y venta de discos soporte para terrazas transitables, balcones y pisos elevados. Soluciones en construcción en seco.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

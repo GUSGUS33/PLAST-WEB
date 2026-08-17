@@ -1,13 +1,16 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { siteConfig } from '@/data/site';
 import { Zap, Clock, Package, CheckCircle2, Phone, Truck } from 'lucide-react';
-import { cities } from '@/data/cities';
-import { whatsappUrl } from '@/data/site';
+
 
 export const metadata: Metadata = {
   title: 'Entrega Inmediata de Discos Soporte | PLASTEM Argentina',
   description: '¿Necesita discos soporte hoy mismo? Contamos con stock permanente para entrega inmediata en GBA y despachos rápidos al interior del país. ¡No detenga su obra!',
+  alternates: {
+    canonical: '/envios/entrega-inmediata-discos-soporte',
+  },
 };
 
 export default function EntregaInmediataPage() {
@@ -17,7 +20,7 @@ export default function EntregaInmediataPage() {
       <section className="relative py-20 md:py-32 overflow-hidden bg-slate-900 text-white">
         <div className="absolute inset-0 opacity-20">
           <Image 
-            src="/placeholders/warehouse-stock.svg" 
+            src="https://picsum.photos/seed/warehouse/1920/1080" 
             alt="Stock permanente" 
             fill 
             className="object-cover"
@@ -37,9 +40,8 @@ export default function EntregaInmediataPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link 
-              href={whatsappUrl('Hola, necesito discos soporte con entrega urgente.')} 
+              href="https://wa.me/5491130213258?text=Hola, necesito discos soporte con entrega urgente." 
               target="_blank"
-              rel="noopener noreferrer"
               className="px-10 py-5 bg-green-500 hover:bg-green-600 text-white rounded-2xl font-bold uppercase tracking-widest transition-all shadow-xl shadow-green-500/40 flex items-center justify-center gap-3"
             >
               <Phone className="w-6 h-6" />
@@ -85,7 +87,9 @@ export default function EntregaInmediataPage() {
               </div>
               <h3 className="text-2xl font-black text-slate-900 mb-4 uppercase italic">Despacho Nacional</h3>
               <p className="text-slate-600 leading-relaxed font-medium">
-                Enviamos paletizado a todo el país vía Vía Cargo o el transporte de su elección. Priorizamos los despachos al interior para acortar tiempos de tránsito.
+                {siteConfig.globalLogisticsOptions?.viaCargo?.enabled
+                  ? `Despachamos de fábrica a todo el país. ${siteConfig.globalLogisticsOptions.viaCargo.standardDisclaimer}`
+                  : 'Despachamos de fábrica a todo el país mediante transportes de carga coordinados previamente con el cliente.'}
               </p>
             </div>
           </div>
@@ -97,13 +101,13 @@ export default function EntregaInmediataPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-black text-slate-900 mb-12 uppercase">Cubrimos todas las ciudades</h2>
           <div className="flex flex-wrap justify-center gap-3">
-            {Object.values(cities).map((city) => (
+            {['Buenos Aires', 'Córdoba', 'Rosario', 'Mendoza', 'Tucumán', 'Salta', 'Neuquén', 'La Plata', 'Mar del Plata'].map((city) => (
               <Link 
-                key={city.slug}
-                href={`/envios/${city.slug}`}
+                key={city}
+                href={`/envios/${city.toLowerCase().replace(/ /g, '-')}`}
                 className="px-6 py-3 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 hover:border-blue-500 hover:text-blue-600 transition-all shadow-sm"
               >
-                Envíos a {city.name}
+                Envíos a {city}
               </Link>
             ))}
           </div>

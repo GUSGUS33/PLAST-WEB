@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import { products } from '@/data/products';
-import { Package, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Metadata } from 'next';
-import { whatsappUrl } from '@/data/site';
+import { DynamicImage } from '@/components/DynamicImage';
 
 export const metadata: Metadata = {
   title: 'Productos | PLASTEM',
   description: 'Conozca nuestra línea de productos para construcción en seco, terrazas transitables y pisos flotantes exteriores.',
+  alternates: {
+    canonical: '/productos',
+  },
 };
 
 export default function ProductosPage() {
@@ -25,8 +28,8 @@ export default function ProductosPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {Object.values(products).map((product) => (
             <div key={product.slug} className="group bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand/30 transition-all flex flex-col">
-              <div className="h-48 bg-slate-100 flex items-center justify-center">
-                <Package className="w-20 h-20 text-slate-300 group-hover:scale-110 group-hover:text-brand/50 transition-all" />
+              <div className="w-full">
+                <DynamicImage category="productos" slug={product.slug} aspectRatio="1/1" enableZoom />
               </div>
               <div className="p-8 flex-grow">
                 <h2 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-brand transition-colors">
@@ -60,8 +63,8 @@ export default function ProductosPage() {
             Somos fábrica directa. Ofrecemos descuentos especiales para constructoras, estudios de arquitectura y arquitectos independientes.
           </p>
           <Link 
-            href={whatsappUrl()} 
-            target="_blank" rel="noopener noreferrer"
+            href="https://wa.me/5491130213258" 
+            target="_blank"
             className="inline-block px-10 py-4 bg-green-500 hover:bg-green-600 text-white rounded-xl font-bold uppercase tracking-widest transition-all shadow-xl shadow-green-900/20"
           >
             Solicitar Presupuesto Gremio

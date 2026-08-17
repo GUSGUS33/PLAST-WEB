@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { whatsappUrl } from '@/data/site';
 
 export const metadata: Metadata = {
   title: 'Preguntas Frecuentes | PLASTEM',
@@ -88,7 +87,7 @@ export default function FAQPage() {
           <h3 className="text-2xl font-bold mb-4">¿No encontró su respuesta?</h3>
           <p className="text-blue-100 mb-8 max-w-lg mx-auto">Un asesor comercial está disponible para brindarle información técnica y cotizaciones detalladas.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="py-4 px-8 bg-green-500 text-white rounded-xl font-bold uppercase tracking-widest hover:bg-green-600 transition-colors shadow-lg shadow-green-600/30">
+            <Link href="https://wa.me/5491130213258" target="_blank" className="py-4 px-8 bg-green-500 text-white rounded-xl font-bold uppercase tracking-widest hover:bg-green-600 transition-colors shadow-lg shadow-green-600/30">
               Chatear por WhatsApp
             </Link>
             <Link href="/#calculador" className="py-4 px-8 bg-white text-blue-900 rounded-xl font-bold uppercase tracking-widest hover:bg-slate-50 transition-colors shadow-lg">

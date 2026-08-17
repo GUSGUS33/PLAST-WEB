@@ -4,8 +4,11 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { CheckCircle2, ChevronRight, HelpCircle, Package, Settings, Wrench, ArrowRight, ShieldCheck, Truck, Waves, Grid3X3, Layers, Sun, MousePointer2, Calculator, Info } from 'lucide-react';
 import { products } from '@/data/products';
+import { siteConfig } from '@/data/site';
 import { ProductCalculator } from '@/components/ProductCalculator';
-import { whatsappUrl } from '@/data/site';
+import { DynamicImage } from '@/components/DynamicImage';
+
+import { InternalLinksSection } from '@/components/InternalLinksSection';
 
 export async function generateStaticParams() {
   return Object.keys(products).map((slug) => ({ slug }));
@@ -70,9 +73,10 @@ export default async function ProductPage({ params }: Props) {
     }))
   };
 
-  const whatsappCotizar = whatsappUrl(`Hola, quiero cotizar ${product.name} y calcular cantidades.`);
-  const whatsappEnvio = whatsappUrl(`Hola, quisiera saber el costo de envío de ${product.name} a mi ciudad.`);
-  const whatsappGeneral = whatsappUrl(product.whatsappPreset);
+  const basePhone = "5491130213258";
+  const whatsappCotizar = `https://wa.me/${basePhone}?text=${encodeURIComponent(`Hola, quiero cotizar ${product.name} y calcular cantidades.`)}`;
+  const whatsappEnvio = `https://wa.me/${basePhone}?text=${encodeURIComponent(`Hola, quisiera saber el costo de envío de ${product.name} a mi ciudad.`)}`;
+  const whatsappGeneral = `https://wa.me/${basePhone}?text=${encodeURIComponent(product.whatsappPreset)}`;
 
   if (slug === 'disco-soporte-baldosones') {
     return (
@@ -119,7 +123,7 @@ export default async function ProductPage({ params }: Props) {
                     Calcular y presupuestar
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
-                  <Link href={whatsappGeneral} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center py-5 px-10 bg-green-500 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-green-600 transition-all shadow-xl shadow-green-500/40">
+                  <Link href={whatsappGeneral} target="_blank" className="flex items-center justify-center py-5 px-10 bg-green-500 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-green-600 transition-all shadow-xl shadow-green-500/40">
                     Consultar por WhatsApp
                   </Link>
                 </div>
@@ -128,12 +132,8 @@ export default async function ProductPage({ params }: Props) {
                 </p>
               </div>
               <div className="relative">
-                <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-700 bg-slate-800">
-                  <Image src="/placeholders/product-disc.svg" alt="Disco Soporte PLASTEM" fill className="object-cover opacity-80" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Package className="w-32 h-32 text-blue-500 opacity-20" />
-                  </div>
+                <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-700 bg-slate-800">
+                  <DynamicImage category="productos" slug={slug} priority enableZoom showCaption aspectRatio="1/1" />
                 </div>
                 {/* Floating badge */}
                 <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-2xl border border-slate-100 flex items-center gap-4">
@@ -269,7 +269,7 @@ export default async function ProductPage({ params }: Props) {
               ))}
             </div>
             <div className="mt-16 text-center">
-              <Link href={whatsappGeneral} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-10 py-5 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/20">
+              <Link href={whatsappGeneral} target="_blank" className="inline-flex items-center gap-3 px-10 py-5 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/20">
                 Quiero asesoramiento para instalar
               </Link>
             </div>
@@ -314,8 +314,8 @@ export default async function ProductPage({ params }: Props) {
                   </div>
                 </div>
               </div>
-              <div className="relative aspect-video rounded-3xl overflow-hidden bg-slate-100 border border-slate-200">
-                <Image src="/placeholders/product-colors.svg" alt="Colores de Discos Soporte" fill className="object-cover" />
+              <div className="rounded-3xl overflow-hidden bg-slate-100 border border-slate-200">
+                <DynamicImage category="general" slug="fabrica-plastem" aspectRatio="16/9" enableZoom showCaption />
               </div>
             </div>
           </div>
@@ -360,7 +360,11 @@ export default async function ProductPage({ params }: Props) {
                     </div>
                     <div className="flex items-center gap-4">
                       <div className="bg-blue-100 p-2 rounded-lg text-blue-600"><Package className="w-6 h-6" /></div>
-                      <span>Envíos por Vía Cargo u otros expresos nacionales.</span>
+                      <span>
+                        {siteConfig.globalLogisticsOptions?.viaCargo?.enabled
+                          ? `Puede consultarse ${siteConfig.globalLogisticsOptions.viaCargo.carrierName} u otros expresos de carga acordados.`
+                          : 'Envíos por expresos de carga acordados previamente.'}
+                      </span>
                     </div>
                     <div className="flex items-center gap-4">
                       <div className="bg-blue-100 p-2 rounded-lg text-blue-600"><Settings className="w-6 h-6" /></div>
@@ -371,10 +375,15 @@ export default async function ProductPage({ params }: Props) {
                       <span>El envío se cotiza según ciudad y volumen del pedido.</span>
                     </div>
                   </div>
-                  <Link href={whatsappEnvio} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/30">
-                    Consultar envío a mi ciudad
-                    <Truck className="ml-2 w-5 h-5" />
-                  </Link>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link href={whatsappEnvio} target="_blank" className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/30">
+                      Consultar envío a mi ciudad
+                      <Truck className="ml-2 w-5 h-5" />
+                    </Link>
+                    <Link href="/envios" className="inline-flex items-center justify-center gap-2 px-6 py-5 bg-slate-200 text-slate-800 rounded-2xl font-bold text-sm hover:bg-slate-300 transition-all">
+                      <span>Ver cobertura y envíos a todo el país</span>
+                    </Link>
+                  </div>
                 </div>
                 <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-100">
                   <h4 className="text-xl font-black uppercase italic mb-4 leading-none">Stock Inmediato</h4>
@@ -402,7 +411,7 @@ export default async function ProductPage({ params }: Props) {
               <Link href="#calculador-seccion" className="px-12 py-6 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-2xl shadow-blue-600/40 text-xl border-b-4 border-blue-800">
                 Solicitar presupuesto ahora
               </Link>
-              <Link href={whatsappGeneral} target="_blank" rel="noopener noreferrer" className="px-12 py-6 bg-green-500 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-green-600 transition-all shadow-2xl shadow-green-500/40 text-xl border-b-4 border-green-700">
+              <Link href={whatsappGeneral} target="_blank" className="px-12 py-6 bg-green-500 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-green-600 transition-all shadow-2xl shadow-green-500/40 text-xl border-b-4 border-green-700">
                 Hablar por WhatsApp
               </Link>
             </div>
@@ -432,7 +441,7 @@ export default async function ProductPage({ params }: Props) {
                 {product.shortDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-4">
-                <Link href={whatsappCotizar} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center py-4 px-8 bg-green-500 text-white rounded-xl font-bold uppercase tracking-widest text-sm sm:text-base hover:bg-green-600 transition-all shadow-lg shadow-green-200">
+                <Link href={whatsappCotizar} target="_blank" className="flex items-center justify-center py-4 px-8 bg-green-500 text-white rounded-xl font-bold uppercase tracking-widest text-sm sm:text-base hover:bg-green-600 transition-all shadow-lg shadow-green-200">
                   Cotizar por WhatsApp
                 </Link>
                 <Link href="#contacto-form" className="flex items-center justify-center py-4 px-8 bg-blue-600 text-white rounded-xl font-bold uppercase tracking-widest text-sm sm:text-base hover:bg-blue-700 transition-all shadow-lg shadow-blue-200">
@@ -449,11 +458,11 @@ export default async function ProductPage({ params }: Props) {
               </div>
             </div>
             <div className="relative">
-               <div className="aspect-square bg-white border border-slate-200 rounded-3xl shadow-xl flex items-center justify-center p-8">
-                 <Package className="w-full h-full text-slate-200 p-10" />
+               <div className="border border-slate-200 rounded-3xl shadow-xl overflow-hidden">
+                 <DynamicImage category="productos" slug={slug} aspectRatio="1/1" enableZoom />
                </div>
                
-               <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-4 shadow-xl border border-slate-100 flex items-center gap-4">
+               <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-4 shadow-xl border border-slate-100 flex items-center gap-4 z-10">
                  <div className="bg-blue-100 p-3 rounded-full text-blue-600">
                    <CheckCircle2 className="w-6 h-6" />
                  </div>
@@ -512,7 +521,7 @@ export default async function ProductPage({ params }: Props) {
               <div className="bg-blue-600 p-8 rounded-3xl text-white shadow-xl shadow-blue-600/20">
                 <h4 className="text-xl font-bold mb-4">¿Necesita saber el costo de envío a su ciudad?</h4>
                 <p className="text-blue-100 mb-6 text-sm">Despachamos desde fábrica en Buenos Aires hacia <Link href="/envios/cordoba" className="text-white font-medium hover:text-blue-200 underline">Córdoba</Link>, <Link href="/envios/buenos-aires" className="text-white font-medium hover:text-blue-200 underline">Gran Buenos Aires</Link> y todo el país. Contáctenos para calcular el flete logístico.</p>
-                <Link href={whatsappEnvio} target="_blank" rel="noopener noreferrer" className="inline-block py-3 px-6 bg-white text-blue-900 rounded-xl font-bold uppercase tracking-widest text-sm hover:bg-slate-50 transition-colors">
+                <Link href={whatsappEnvio} target="_blank" className="inline-block py-3 px-6 bg-white text-blue-900 rounded-xl font-bold uppercase tracking-widest text-sm hover:bg-slate-50 transition-colors">
                   Consultar Envío
                 </Link>
               </div>
@@ -536,7 +545,7 @@ export default async function ProductPage({ params }: Props) {
                   <p className="text-sm text-slate-500 italic max-w-xl">No se preocupe por la matemática. Envíenos sus metros cuadrados y nosotros calculamos la cantidad exacta que necesita, contemplando desperdicios y recortes, de forma totalmente gratuita.</p>
                </div>
                <div className="md:w-1/3 flex flex-col gap-4">
-                  <Link href={whatsappCotizar} target="_blank" rel="noopener noreferrer" className="w-full py-4 px-6 bg-green-500 text-white rounded-xl text-sm font-bold uppercase tracking-widest hover:bg-green-600 transition-all shadow-lg text-center shadow-green-500/20">
+                  <Link href={whatsappCotizar} target="_blank" className="w-full py-4 px-6 bg-green-500 text-white rounded-xl text-sm font-bold uppercase tracking-widest hover:bg-green-600 transition-all shadow-lg text-center shadow-green-500/20">
                      Ayudame a calcular
                   </Link>
                </div>
@@ -544,7 +553,7 @@ export default async function ProductPage({ params }: Props) {
          </div>
       </section>
 
-        {/* Galería */}
+      {/* Galería Placeholder */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="text-center mb-12">
@@ -553,28 +562,28 @@ export default async function ProductPage({ params }: Props) {
            </div>
            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="aspect-square bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden relative group shadow-sm">
-              <Image src="/placeholders/terrace-finished.svg" alt="Terraza terminada" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+              <Image src="https://picsum.photos/seed/terrt1/600/600" alt="Terraza terminada" fill className="object-cover transition-transform duration-500 group-hover:scale-110" referrerPolicy="no-referrer" />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-4 flex flex-col justify-end h-1/2">
                  <span className="text-white font-bold text-sm tracking-wide">Edificio CABA</span>
                  <span className="text-slate-300 text-xs">Terraza verde transitable</span>
               </div>
             </div>
             <div className="aspect-square bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden relative group shadow-sm">
-              <Image src="/placeholders/installation-process.svg" alt="Instalación en proceso" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+              <Image src="https://picsum.photos/seed/inst3/600/600" alt="Instalación en proceso" fill className="object-cover transition-transform duration-500 group-hover:scale-110" referrerPolicy="no-referrer" />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-4 flex flex-col justify-end h-1/2">
                  <span className="text-white font-bold text-sm tracking-wide">Patios de Córdoba</span>
                  <span className="text-slate-300 text-xs">Instalación en seco (60m²)</span>
               </div>
             </div>
             <div className="aspect-square bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden relative group shadow-sm">
-              <Image src="/placeholders/product-disc.svg" alt="Detalle del producto" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+              <Image src="https://picsum.photos/seed/det8/600/600" alt="Detalle del producto" fill className="object-cover transition-transform duration-500 group-hover:scale-110" referrerPolicy="no-referrer" />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-4 flex flex-col justify-end h-1/2">
                  <span className="text-white font-bold text-sm tracking-wide">Solarium Rosario</span>
                  <span className="text-slate-300 text-xs">Borde de piscina elevado</span>
               </div>
             </div>
             <div className="aspect-square bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden relative group shadow-sm">
-              <Image src="/placeholders/terrace-installation.svg" alt="Obra seca" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+              <Image src="https://picsum.photos/seed/obra5/600/600" alt="Obra seca" fill className="object-cover transition-transform duration-500 group-hover:scale-110" referrerPolicy="no-referrer" />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-4 flex flex-col justify-end h-1/2">
                  <span className="text-white font-bold text-sm tracking-wide">Casa Particular Norte</span>
                  <span className="text-slate-300 text-xs">Reemplazo de contrapiso</span>
@@ -594,7 +603,7 @@ export default async function ProductPage({ params }: Props) {
                      <Package className="w-8 h-8" />
                   </div>
                   <h4 className="font-bold text-slate-800 mb-3 text-lg">Transporte a todo el país</h4>
-                  <p className="text-sm text-slate-600 leading-relaxed">Despachamos por expreso hacia su provincia o ciudad con facilidad logística y pago en destino.</p>
+                  <p className="text-sm text-slate-600 leading-relaxed">Despachamos por expreso hacia su provincia o ciudad con logística coordinada según el destino.</p>
                </div>
                <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center hover:shadow-md transition-shadow relative overflow-hidden">
                   <div className="absolute top-0 inset-x-0 h-1 bg-green-500"></div>
@@ -612,7 +621,7 @@ export default async function ProductPage({ params }: Props) {
                   <p className="text-sm text-slate-600 leading-relaxed">Le informamos el volumen y peso exacto al instante para que pueda estimar costos con su transporte de confianza.</p>
                </div>
             </div>
-            <Link href={whatsappEnvio} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center py-4 px-10 bg-blue-600 text-white rounded-xl font-bold uppercase tracking-widest text-sm hover:bg-blue-700 transition-all shadow-lg shadow-blue-200">
+            <Link href={whatsappEnvio} target="_blank" className="inline-flex items-center justify-center py-4 px-10 bg-blue-600 text-white rounded-xl font-bold uppercase tracking-widest text-sm hover:bg-blue-700 transition-all shadow-lg shadow-blue-200">
                Consulte costo logístico exacto
             </Link>
          </div>
@@ -651,12 +660,16 @@ export default async function ProductPage({ params }: Props) {
               </div>
 
               <div className="mt-4">
-                <Link href={whatsappGeneral} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 px-8 bg-green-500 text-white rounded-xl font-bold uppercase tracking-widest hover:bg-green-600 transition-all shadow-lg hover:shadow-green-500/20">
+                <Link href={whatsappGeneral} target="_blank" className="flex items-center justify-center gap-2 w-full py-4 px-8 bg-green-500 text-white rounded-xl font-bold uppercase tracking-widest hover:bg-green-600 transition-all shadow-lg hover:shadow-green-500/20">
                   Hablar por WhatsApp
                 </Link>
                 <p className="text-center text-xs text-slate-400 mt-3 font-medium">Atención inmediata de Lunes a Viernes de 8 a 17hs</p>
               </div>
             </div>
+          </div>
+
+          <div className="mt-16 text-left">
+            <InternalLinksSection slug={product.slug} />
           </div>
         </div>
       </section>

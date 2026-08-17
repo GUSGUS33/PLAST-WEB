@@ -1,7 +1,6 @@
 import { Mail, Phone, MapPin, Clock, MessageSquare } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { siteConfig, whatsappUrl } from '@/data/site';
 
 export const metadata: Metadata = {
   title: 'Contacto | PLASTEM',
@@ -39,12 +38,11 @@ export default function ContactoPage() {
                     <h3 className="font-bold text-slate-900">WhatsApp</h3>
                     <p className="text-slate-500 text-sm mb-2">Respuesta rápida para cotizaciones y stock.</p>
                     <Link 
-                      href={whatsappUrl()} 
+                      href="https://wa.me/5491130213258" 
                       target="_blank"
-                      rel="noopener noreferrer"
                       className="text-green-600 font-bold hover:underline"
                     >
-                      {siteConfig.phone.display}
+                      +54 9 11 3021-3258
                     </Link>
                   </div>
                 </div>
@@ -57,10 +55,10 @@ export default function ContactoPage() {
                     <h3 className="font-bold text-slate-900">Email</h3>
                     <p className="text-slate-500 text-sm mb-2">Para consultas formales y órdenes de compra.</p>
                     <Link 
-                      href={`mailto:${siteConfig.email}`} 
+                      href="mailto:ventas@plastem.com.ar" 
                       className="text-blue-600 font-bold hover:underline"
                     >
-                      {siteConfig.email}
+                      ventas@plastem.com.ar
                     </Link>
                   </div>
                 </div>
@@ -72,7 +70,7 @@ export default function ContactoPage() {
                   <div>
                     <h3 className="font-bold text-slate-900">Fábrica</h3>
                     <p className="text-slate-500 text-sm mb-1">Zona Industrial GBA Sur.</p>
-                    <p className="text-slate-800 font-medium">{siteConfig.location.display}</p>
+                    <p className="text-slate-800 font-medium">Turdera / Temperley, Buenos Aires, Argentina</p>
                   </div>
                 </div>
 
@@ -82,7 +80,7 @@ export default function ContactoPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900">Horarios de Atención</h3>
-                    <p className="text-slate-500 text-sm">{siteConfig.openingHours.display}.</p>
+                    <p className="text-slate-500 text-sm">Lunes a Viernes: 09:00 a 16:00 hs.</p>
                     <p className="text-slate-500 text-sm">Sábados y Domingos: Cerrado.</p>
                   </div>
                 </div>
@@ -100,15 +98,14 @@ export default function ContactoPage() {
               <div className="bg-white/10 p-6 rounded-2xl border border-white/10 backdrop-blur-sm">
                 <h4 className="font-bold mb-2 text-white">Información que ayuda:</h4>
                 <ul className="text-sm text-slate-300 space-y-2">
-                  <li>Metros cuadrados totales de la superficie.</li>
-                  <li>Medidas de los baldosones (Ej: 40x40, 50x50, 60x40).</li>
-                  <li>Localidad de envío.</li>
+                  <li>• Metros cuadrados totales de la superficie.</li>
+                  <li>• Medidas de los baldosones (Ej: 40x40, 50x50, 60x40).</li>
+                  <li>• Localidad de envío.</li>
                 </ul>
               </div>
               <Link 
-                href={whatsappUrl('Hola, adjunto datos de mi obra para presupuesto.')} 
+                href="https://wa.me/5491130213258?text=Hola,%20adjunto%20datos%20de%20mi%20obra%20para%20presupuesto." 
                 target="_blank"
-                rel="noopener noreferrer"
                 className="w-full py-4 bg-white text-brand-dark rounded-xl font-bold uppercase tracking-widest text-center hover:bg-slate-100 transition-all inline-block shadow-xl shadow-brand-dark/50"
               >
                 Enviar Datos por WhatsApp

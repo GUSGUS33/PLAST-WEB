@@ -27,7 +27,7 @@ export default function NosotrosPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
           <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
             <Image 
-              src="/placeholders/factory-floor.svg" 
+              src="https://picsum.photos/seed/factory/800/600" 
               alt="Planta Industrial PLASTEM" 
               fill
               className="object-cover" 

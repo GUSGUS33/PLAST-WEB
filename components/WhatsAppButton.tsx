@@ -1,9 +1,9 @@
 import { MessageCircle } from 'lucide-react';
-import { whatsappUrl } from '@/data/site';
 
 export default function WhatsAppButton() {
+  const wsNumber = "5491130213258";
   const wMessage = "Hola! Quiero cotizar discos soporte y saber más sobre envíos.";
-  const url = whatsappUrl(wMessage);
+  const url = `https://wa.me/${wsNumber}?text=${encodeURIComponent(wMessage)}`;
 
   return (
     <a 

@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { siteConfig } from '@/data/site';
 
 export default function Footer() {
   return (
@@ -15,7 +14,7 @@ export default function Footer() {
             </Link>
             <p className="mb-6 text-sm text-slate-400 max-w-xs leading-relaxed">
               Fábrica de discos soporte para baldosones, pisos flotantes exteriores y terrazas transitables. 
-              Ventas por mayor directo de fábrica con envíos a todo el país.
+              Venta directa de fábrica con envíos a todo el país.
             </p>
           </div>
           
@@ -42,10 +41,10 @@ export default function Footer() {
           <div>
             <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-slate-500">Contacto</h3>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li>{siteConfig.openingHours.display}</li>
-              <li>{siteConfig.location.display}</li>
-              <li>{siteConfig.phone.display}</li>
-              <li>{siteConfig.email}</li>
+              <li>Atención comercial y asesoramiento de obra</li>
+              <li>Turdera / Temperley, Buenos Aires</li>
+              <li>+54 9 11 3021-3258</li>
+              <li>ventas@plastem.com.ar</li>
             </ul>
           </div>
         </div>
@@ -67,7 +66,7 @@ export default function Footer() {
           
           <div className="text-[10px] hidden md:flex gap-4 font-mono">
             <span className="text-slate-500 italic">JSON-LD: LocalBusiness Verified</span>
-            <span className="text-blue-500">Next.js App Router</span>
+            <span className="text-blue-500">Next.js App Router v15</span>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
@@ -75,7 +74,7 @@ export default function Footer() {
               <Link href="/sitemap.xml" className="text-xs hover:text-white transition-colors">Sitemap</Link>
               <Link href="/privacidad" className="text-xs hover:text-white transition-colors">Políticas</Link>
             </div>
-            <div className="text-slate-300 font-bold border border-slate-700 px-2 py-1 rounded text-[10px]">Sitio estático</div>
+            <div className="text-slate-300 font-bold border border-slate-700 px-2 py-1 rounded text-[10px]">GA4 ACTIVE</div>
           </div>
         </div>
       </div>

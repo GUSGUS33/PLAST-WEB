@@ -33,7 +33,7 @@ export const guides: Record<string, GuideData> = {
     metaDescription: 'Aprenda cómo instalar discos soporte para baldosones en terrazas o pisos flotantes exteriores. Instalación en seco rápida y sencilla.',
     category: 'Instalación',
     relatedProduct: 'disco-soporte-baldosones',
-    mainImage: '/placeholders/guide-technical.svg',
+    mainImage: 'https://picsum.photos/seed/installation/1200/600',
     contentHtml: `
       <p>Antes de comenzar, es fundamental asegurar que la superficie base esté limpia. Nuestra técnica de instalación en seco permite ahorrar tiempo y evitar el uso de mezclas tradicionales.</p>
     `,
@@ -41,17 +41,17 @@ export const guides: Record<string, GuideData> = {
       {
         title: 'Preparación de la superficie',
         description: 'Limpiar a fondo la losa o el patio de tierra compactada. Si es sobre membrana asfáltica, verificar su estado.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/clean/600/400'
       },
       {
         title: 'Presentación y distribución',
         description: 'Colocar los discos comenzando desde una esquina, utilizándolos como apoyo en los vértices donde se unirán 4 baldosones.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/layout/600/400'
       },
       {
         title: 'Colocación de piezas',
         description: 'Apoyar los baldosones sobre las cruces separadoras. La separación de 4mm es automática.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/placing/600/400'
       }
     ],
     faq: [
@@ -69,7 +69,7 @@ export const guides: Record<string, GuideData> = {
     metaDescription: 'Solucione desniveles en su techo sin recurrir a obra húmeda. Aprenda cómo nivelar una terraza fácilmente usando soportes para baldosas.',
     category: 'Instalación',
     relatedProduct: 'disco-soporte-baldosones',
-    mainImage: '/placeholders/guide-technical.svg',
+    mainImage: 'https://picsum.photos/seed/leveling/1200/600',
     contentHtml: `
       <p>Nivelar la superficie de su azotea para poder transitarla no debe ser sinónimo de toneladas de material. Nuestra alternativa de obra seca con piso elevado es la más elegida.</p>
     `,
@@ -77,12 +77,12 @@ export const guides: Record<string, GuideData> = {
       {
         title: 'Identificar pendientes',
         description: 'Localizar las zonas más bajas y hacia dónde drena el agua hacia las rejillas.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/survey/600/400'
       },
       {
         title: 'Uso de suplementos',
         description: 'Utilizar recortes de membrana o goma debajo del disco para compensar declives de hasta 2cm.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/shims/600/400'
       }
     ],
     faq: [
@@ -100,7 +100,7 @@ export const guides: Record<string, GuideData> = {
     metaDescription: 'Aprenda cómo hacer un piso flotante exterior en patios y terrazas sin romper y en pocos días.',
     category: 'Instalación',
     relatedProduct: 'disco-soporte-baldosones',
-    mainImage: '/placeholders/guide-technical.svg',
+    mainImage: 'https://picsum.photos/seed/deck/1200/600',
     contentHtml: `
       <p>Un piso flotante exterior transitable consiste en crear una plataforma elevada sobre su patio de tierra o terraza impermeabilizada existente.</p>
     `,
@@ -108,12 +108,12 @@ export const guides: Record<string, GuideData> = {
       {
         title: 'Base compacta',
         description: 'Apisonar la tierra y colocar una manta geotextil para evitar malezas.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/ground/600/400'
       },
       {
         title: 'Montaje en seco',
         description: 'Distribuir los discos y apoyar las piezas sin necesidad de pegamentos.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/build/600/400'
       }
     ],
     faq: [
@@ -133,7 +133,7 @@ export const guides: Record<string, GuideData> = {
     metaDescription: 'Fórmula simple para saber cuántos discos soporte necesitas comprar por metro cuadrado según el tamaño de tu baldosa exterior.',
     category: 'Cálculo',
     relatedProduct: 'disco-soporte-baldosones',
-    mainImage: '/placeholders/guide-technical.svg',
+    mainImage: 'https://picsum.photos/seed/math/1200/600',
     contentHtml: `
       <h2>La matemática detrás de la red de discos</h2>
       <p>Para revestir de forma estructural utilizando <a href="/productos/disco-soporte-baldosones" class="text-blue-600 font-semibold underline decoration-blue-300 underline-offset-2">disco soporte para baldosones</a> la regla habitual es simple, pero variará acorde a cuánto midan los mosaicos cementicios que haya elegido.</p>
@@ -164,7 +164,7 @@ export const guides: Record<string, GuideData> = {
     metaDescription: 'Cómo calcular la cantidad correcta de discos soporte plásticos para su obra exterior y losas. Tips para reducir recortes y sobrantes.',
     category: 'Cálculo',
     relatedProduct: 'disco-soporte-baldosones',
-    mainImage: '/placeholders/guide-technical.svg',
+    mainImage: 'https://picsum.photos/seed/blueprint/1200/600',
     contentHtml: `
       <h2>¿Cómo relevar metraje en obras irregulares?</h2>
       <p>Si está preguntándose cómo diagramar la compra de insumos estructurales para poder hacer <a href="/soluciones/terraza-transitable" class="text-blue-600 underline">su nueva terraza transitable</a>, le ayudamos. Calcule el largo y ancho de cada espacio que desea cubrir y súmelo.</p>
@@ -190,7 +190,7 @@ export const guides: Record<string, GuideData> = {
     metaDescription: 'Diferencias de costo y uso entre un disco soporte fijo para baldosas de terraza y un pedestal regulable. Elegí la opción más económica.',
     category: 'Comparativas',
     relatedProduct: 'disco-soporte-baldosones',
-    mainImage: '/placeholders/guide-technical.svg',
+    mainImage: 'https://picsum.photos/seed/vs/1200/600',
     contentHtml: `
       <h2>Simplicidad vs Ajuste Milimétrico Mayor</h2>
       <p>Frente a la encrucijada de <a href="/soluciones/nivelar-piso-exterior" class="text-blue-600 underline">cómo solucionar o armar pisos de exterior elevado</a> surgen dos vías: los tacos o rosetas fijas, y los grandes pedestales regulables a rosca.</p>
@@ -216,7 +216,7 @@ export const guides: Record<string, GuideData> = {
     metaDescription: 'Descubra la resistencia, composición técnica y ventajas del disco de polipropileno inyectado frente a sus copias. Discos soporte nacionales.',
     category: 'Comparativas',
     relatedProduct: 'disco-soporte-baldosones',
-    mainImage: '/placeholders/guide-technical.svg',
+    mainImage: 'https://picsum.photos/seed/quality/1200/600',
     contentHtml: `
       <h2>¿Por qué son importantes los moldes y materiales plásticos?</h2>
       <p>En el rubro de infraestructura pesada o para resolver problemas críticos tales como <a href="/soluciones/evitar-filtraciones-terraza" class="text-blue-600 underline">cómo evitar perforaciones o filtraciones pluviales</a> se debe evaluar el material base.</p>
@@ -242,7 +242,7 @@ export const guides: Record<string, GuideData> = {
     metaDescription: 'Conozca los usos de la roseta plástica separadora en la construcción de pisos elevados drenantes técnicos en tejados.',
     category: 'Educación',
     relatedProduct: 'disco-soporte-baldosones',
-    mainImage: '/placeholders/guide-technical.svg',
+    mainImage: 'https://picsum.photos/seed/info/1200/600',
     contentHtml: `
       <h2>Concepto del sistema flotante elevado de azotea</h2>
       <p>Los separadores niveladores plásticos nacieron como tecnología limpia de reforma para construir o adaptar <a href="/soluciones/terraza-transitable" class="text-blue-600 underline">modelos de terraza seca transitable</a> dejando la vieja membrana techista a cubierto y sana debajo y proveyendo un plano nuevo de baldosines transitable superior.</p>
@@ -265,13 +265,13 @@ export const guides: Record<string, GuideData> = {
     metaDescription: 'Sepa por qué el piso técnico apoyado sobre discos plásticos transformó el mundo de techos verdes, azoteas, drenajes y patios.',
     category: 'Educación',
     relatedProduct: 'disco-soporte-baldosones',
-    mainImage: '/placeholders/guide-technical.svg',
+    mainImage: 'https://picsum.photos/seed/benefits/1200/600',
     contentHtml: `
       <h2>Eficiencia energética y mantenimiento inigualable</h2>
       <p>Entre los métodos más inteligentes de <a href="/soluciones/evitar-filtraciones-terraza" class="text-blue-600 underline">resolver y detener filtraciones a la losa en verano/invierno</a> se halla crear un doble espacio pluvial. Construyendo una capa separada bajo el formato de "Piso Flotante Exterior", las baldosas cementicias impiden que la luz solar queme su membrana (lo cual la evapora o hace quebradiza), resguardando su impermeabilización por décadas y logrando un factor aislante térmico inigualable como techo ventilado.</p>
       
       <h2>Reducción drástica del plazo de obra civil</h2>
-      <p>Basta de levantar bolsas pesadas en malacates polvorientos a las siete plantas de arriba, el moderno <a href="/productos/disco-soporte-baldosones" class="text-blue-600 font-semibold underline decoration-blue-300 underline-offset-2">disco soporte para baldosones</a> solo exige llevar cajas. Cómputelo a demanda del metraje del patio con un rápido clic en <a href="/#calculador" class="text-blue-600 underline">la app pre-creada calculadora virtual</a>. Atendemos logísticas continuas con corralones grandes proveyendo <a href="/envios/la-plata" class="text-blue-600 underline">entregas en la ciudad de La Plata</a> sin contratiempos.</p>
+      <p>Basta de levantar bolsas pesadas en malacates polvorientos a las siete plantas de arriba, el moderno <a href="/productos/disco-soporte-fijado-y-nivelador-de-baldosones" class="text-blue-600 font-semibold underline decoration-blue-300 underline-offset-2">disco soporte fijado y nivelador de baldosones</a> solo exige llevar cajas. Cómputelo a demanda del metraje del patio con un rápido clic en <a href="/#calculador" class="text-blue-600 underline">la app pre-creada calculadora virtual</a>. Atendemos logísticas continuas con corralones grandes proveyendo <a href="/envios/la-plata" class="text-blue-600 underline">entregas en la ciudad de La Plata</a> sin contratiempos.</p>
     `,
     faq: [
       {
@@ -290,7 +290,7 @@ export const guides: Record<string, GuideData> = {
     metaDescription: 'Consulte la ficha técnica oficial de nuestros discos soporte: resistencia a la carga, materialidad, dimensiones y normas de calidad argentina.',
     category: 'Técnica',
     relatedProduct: 'disco-soporte-baldosones',
-    mainImage: '/placeholders/guide-technical.svg',
+    mainImage: 'https://picsum.photos/seed/blueprint/1200/600',
     contentHtml: `
       <p>Para arquitectos e ingenieros que buscan precisión en sus proyectos de <a href="/soluciones/terraza-transitable" class="text-blue-600 underline">terrazas transitables</a>, presentamos el detalle constructivo de nuestros insumos.</p>
       <h3>Componentes y Resistencia</h3>
@@ -300,12 +300,12 @@ export const guides: Record<string, GuideData> = {
       {
         title: 'Dimensiones Reales',
         description: 'Diámetro de 146mm, altura base de 12mm y aletas separadoras de 5mm de espesor para una junta perfecta.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/specs1/600/400'
       },
       {
         title: 'Estabilidad Térmica',
         description: 'Rango de operación desde -15°C hasta 60°C sin pérdida de propiedades mecánicas o deformación.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/temp/600/400'
       }
     ],
     faq: [
@@ -323,7 +323,7 @@ export const guides: Record<string, GuideData> = {
     metaDescription: '¿Su piso flotante hace ruido o se mueve? Aprenda a solucionar los problemas de nivelación y crujidos en terrazas secas con discos plásticos.',
     category: 'Técnica',
     relatedProduct: 'disco-soporte-baldosones',
-    mainImage: '/placeholders/guide-technical.svg',
+    mainImage: 'https://picsum.photos/seed/mistake/1200/600',
     contentHtml: `
       <p>La mayoría de los inconvenientes en un <a href="/soluciones/nivelar-piso-exterior" class="text-blue-600 underline">piso elevado exterior</a> se deben a una mala nivelación inicial de la losa o a la falta de suplementos.</p>
     `,
@@ -331,12 +331,12 @@ export const guides: Record<string, GuideData> = {
       {
         title: 'Corregir el Crujido',
         description: 'Si una baldosa "baila", el disco no apoya parejo. Use recortes de membrana asfáltica para nivelar milimétricamente.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/fix1/600/400'
       },
       {
         title: 'Limpieza de Rejillas',
         description: 'Aunque el sistema es drenante, verifique periódicamente los perímetros para evitar acumulaciones de hojas bajo el piso.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/drain/600/400'
       }
     ],
     faq: [
@@ -354,7 +354,7 @@ export const guides: Record<string, GuideData> = {
     metaDescription: 'Descubra cómo transformar su azotea en un espacio de diseño. Ideas de combinación de materiales, iluminación y vegetación sobre piso técnico.',
     category: 'Educación',
     relatedProduct: 'disco-soporte-baldosones',
-    mainImage: '/placeholders/guide-technical.svg',
+    mainImage: 'https://picsum.photos/seed/design/1200/600',
     contentHtml: `
       <p>Tener un <a href="/soluciones/terraza-transitable" class="text-blue-600 underline">piso flotante en el patio</a> no solo es técnico, es una oportunidad estética para jerarquizar su vivienda o edificio.</p>
       <h3>Tendencias en Argentina</h3>
@@ -364,12 +364,12 @@ export const guides: Record<string, GuideData> = {
       {
         title: 'Espacios Multiuso',
         description: 'Cree zonas de parrilla y living separadas visualmente usando diferentes tonos de losetas apoyadas sobre soportes.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/bbq/600/400'
       },
       {
         title: 'Vegetación sobre Elevado',
         description: 'Instale macetas pesadas directamente sobre el piso flotante; el peso se distribuye hacia la losa sin dañar la estética.',
-        image: '/placeholders/guide-technical.svg'
+        image: 'https://picsum.photos/seed/garden/600/400'
       }
     ],
     faq: [

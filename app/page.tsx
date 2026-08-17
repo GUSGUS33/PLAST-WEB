@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, Layers, Truck, ShieldCheck, BadgeCheck, Phone } from 'lucide-react';
 import { ProductCalculator } from '@/components/ProductCalculator';
-import { whatsappUrl } from '@/data/site';
+import { DynamicImage } from '@/components/DynamicImage';
 
 export default function Home() {
   return (
@@ -49,8 +48,8 @@ export default function Home() {
                   <span className="text-xs mt-2 text-slate-500 font-medium">Te ayudamos a calcular la cantidad exacta</span>
                 </div>
                 <Link 
-                  href={whatsappUrl()}
-                  target="_blank" rel="noopener noreferrer"
+                  href="https://wa.me/5491130213258"
+                  target="_blank"
                   className="flex items-center justify-center py-4 px-8 bg-green-500 text-white rounded-xl font-bold uppercase tracking-widest text-sm sm:text-base hover:bg-green-600 transition-all shadow-lg shadow-green-200 h-fit"
                 >
                   <Phone className="mr-2 h-5 w-5" />
@@ -59,10 +58,10 @@ export default function Home() {
               </div>
             </div>
                   <div className="relative">
-              <div className="aspect-square rounded-3xl bg-slate-100 border border-slate-200 overflow-hidden relative shadow-2xl">
-                 <Image src="/placeholders/terrace-installation.svg" alt="Instalación de terraza con discos soporte" fill className="object-cover" priority />
+              <div className="rounded-3xl border border-slate-200 overflow-hidden shadow-2xl">
+                 <DynamicImage category="general" slug="hero-home" priority enableZoom showCaption aspectRatio="1/1" />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-xl border border-slate-100 flex items-center gap-4">
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-xl border border-slate-100 flex items-center gap-4 z-10">
                 <div className="bg-green-100 p-3 rounded-full text-green-600">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
@@ -167,19 +166,19 @@ export default function Home() {
 
               <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
                  <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2"><Truck className="text-blue-500 w-5 h-5"/> ¿Cuánto cuesta el envío?</h3>
-                 <p className="text-sm text-slate-600">Despachamos desde fábrica en Provincia de Buenos Aires hacia todo el país a través de diferentes expresos. El costo depende de la ciudad (vea más detalles sobre <Link href="/envios/buenos-aires" className="text-blue-600 hover:underline">envíos en Buenos Aires</Link> o <Link href="/envios/cordoba" className="text-blue-600 hover:underline">envíos a Córdoba</Link>). <Link href={whatsappUrl('Hola, necesito saber cuánto sale el envío.')} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-bold">Consulte costo exacto por WhatsApp</Link>.</p>
+                 <p className="text-sm text-slate-600">Despachamos desde fábrica en Provincia de Buenos Aires hacia todo el país a través de diferentes expresos. El costo depende de la ciudad (vea más detalles sobre <Link href="/envios/buenos-aires" className="text-blue-600 hover:underline">envíos en Buenos Aires</Link> o <Link href="/envios/cordoba" className="text-blue-600 hover:underline">envíos a Córdoba</Link>). <Link href="https://wa.me/5491130213258?text=Hola,%20necesito%20saber%20cu%C3%A1nto%20sale%20el%20env%C3%ADo." target="_blank" className="text-blue-600 hover:underline font-bold">Consulte costo exacto por WhatsApp</Link>.</p>
               </div>
 
               <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
                  <h3 className="font-bold text-slate-800 mb-2 flex items-center gap-2"><Layers className="text-blue-500 w-5 h-5"/> ¿Cuántos necesito?</h3>
-                 <p className="text-sm text-slate-600">Depende de la medida del baldosón (ej: 40x40, 50x50, 60x40). Por regla general, calcule 1 disco por cada vértice de baldosa, con un pequeño excedente por recortes. Puede seguir nuestra <Link href="/guias/calcular-discos-soporte-terraza" className="text-blue-600 font-semibold hover:underline">guía para calcular la cantidad de discos soporte</Link>, o <Link href={whatsappUrl('Hola, necesito ayuda para calcular cantidad.')} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-bold">consultarnos para que hagamos el cómputo exacto.</Link></p>
+                 <p className="text-sm text-slate-600">Depende de la medida del baldosón (ej: 40x40, 50x50, 60x40). Por regla general, calcule 1 disco por cada vértice de baldosa, con un pequeño excedente por recortes. Puede seguir nuestra <Link href="/guias/calcular-discos-soporte-terraza" className="text-blue-600 font-semibold hover:underline">guía para calcular la cantidad de discos soporte</Link>, o <Link href="https://wa.me/5491130213258?text=Hola,%20necesito%20ayuda%20para%20calcular%20cantidad." target="_blank" className="text-blue-600 hover:underline font-bold">consultarnos para que hagamos el cómputo exacto.</Link></p>
               </div>
            </div>
 
            <div className="mt-12 text-center flex flex-col items-center justify-center">
              <Link 
-               href={whatsappUrl('Hola, tengo una consulta técnica sobre los discos soporte.')}
-               target="_blank" rel="noopener noreferrer"
+               href="https://wa.me/5491130213258?text=Hola,%20tengo%20una%20consulta%20t%C3%A9cnica%20sobre%20los%20discos%20soporte."
+               target="_blank"
                className="inline-flex items-center justify-center py-4 px-8 bg-green-500 text-white rounded-xl font-bold uppercase tracking-widest text-sm sm:text-base hover:bg-green-600 transition-all shadow-lg shadow-green-200"
              >
                <Phone className="mr-2 h-5 w-5" />

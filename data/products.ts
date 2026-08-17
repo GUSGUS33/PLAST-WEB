@@ -1,4 +1,7 @@
+import { siteConfig } from './site';
+
 export interface FAQ {
+
   question: string;
   answer: string;
 }
@@ -72,7 +75,7 @@ export const products: Record<string, ProductData> = {
       },
       {
         question: '¿Cuánto cuesta el envío?',
-        answer: 'El costo depende de la ciudad y la cantidad de bultos. Despachamos desde GBA Sur por Vía Cargo u otros expresos de confianza. Coordinamos el transporte más conveniente para usted.'
+        answer: `El costo y la modalidad del transporte se cotizan o coordinan por separado según destino y cantidad. Despachamos desde GBA Sur; ${siteConfig.globalLogisticsOptions?.viaCargo?.enabled ? siteConfig.globalLogisticsOptions.viaCargo.standardDisclaimer : 'los despachos se coordinan previamente con el cliente.'}`
       },
       {
         question: '¿Hay stock inmediato?',

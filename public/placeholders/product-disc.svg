@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-label="Disco soporte PLASTEM">
-  <rect width="1000" height="1000" fill="#e2e8f0"/>
-  <circle cx="500" cy="520" r="300" fill="#1e293b"/>
-  <circle cx="500" cy="520" r="210" fill="#334155"/>
-  <rect x="485" y="215" width="30" height="610" rx="15" fill="#2563eb"/>
-  <rect x="195" y="505" width="610" height="30" rx="15" fill="#2563eb"/>
-  <circle cx="500" cy="520" r="70" fill="#64748b"/>
-  <text x="80" y="125" fill="#1e293b" font-family="system-ui, sans-serif" font-size="60" font-weight="700">Disco soporte</text>
-</svg>

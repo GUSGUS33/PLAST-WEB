@@ -1,34 +1,42 @@
 import { MetadataRoute } from 'next';
-import { cities } from '@/data/cities';
-import { guides } from '@/data/guides';
+import { getPublishedGeoLocations } from '@/data/geo';
 import { products } from '@/data/products';
-import { segments } from '@/data/segments';
 import { solutions } from '@/data/solutions';
-import { siteConfig } from '@/data/site';
+import { guides } from '@/data/guides';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.plastem.com.ar';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
+  const staticRoutes = [
     '',
     '/productos',
-    ...Object.keys(products).map((slug) => `/productos/${slug}`),
+    ...Object.keys(products).map(slug => `/productos/${slug}`),
     '/soluciones',
-    ...Object.keys(segments).map((slug) => `/soluciones/${slug}`),
-    ...Object.keys(solutions).map((slug) => `/soluciones/${slug}`),
+    '/soluciones/para-arquitectos',
+    '/soluciones/para-constructoras',
+    '/soluciones/para-particulares',
+    ...Object.keys(solutions).map(slug => `/soluciones/${slug}`),
     '/envios',
-    ...Object.keys(cities).map((slug) => `/envios/${slug}`),
     '/envios/entrega-inmediata-discos-soporte',
+  ];
+
+  const geoRoutes = getPublishedGeoLocations().map(g => `/envios/${g.slug}`);
+
+  const guideRoutes = [
     '/guias',
-    ...Object.keys(guides).map((slug) => `/guias/${slug}`),
+    ...Object.keys(guides).map(slug => `/guias/${slug}`),
     '/nosotros',
     '/contacto',
     '/preguntas-frecuentes',
     '/privacidad',
   ];
 
+  // Remove duplicates if any
+  const routes = Array.from(new Set([...staticRoutes, ...geoRoutes, ...guideRoutes]));
+
   return routes.map((route) => ({
-    url: `${siteConfig.siteUrl}${route}`,
+    url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: route === '' ? 'weekly' : 'monthly',
     priority: route === '' ? 1 : 0.8,

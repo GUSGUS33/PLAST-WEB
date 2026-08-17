@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { guides } from '@/data/guides';
 import { ArrowRight, CheckCircle2, ChevronRight } from 'lucide-react';
-import { absoluteUrl, whatsappUrl } from '@/data/site';
-import { sanitizeTrustedHtml } from '@/lib/sanitizeHtml';
+import { InternalLinksSection } from '@/components/InternalLinksSection';
+import { DynamicImage } from '@/components/DynamicImage';
 
 export async function generateStaticParams() {
   return Object.keys(guides).map((slug) => ({ slug }));
@@ -54,13 +54,13 @@ export default async function GuiaPage({ params }: Props) {
       name: 'PLASTEM',
       logo: {
         '@type': 'ImageObject',
-        url: absoluteUrl('/logo.png')
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/logo.png`
       }
     },
     datePublished: '2025-01-01',
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': absoluteUrl(`/guias/${slug}`)
+      '@id': `${process.env.NEXT_PUBLIC_SITE_URL}/guias/${slug}`
     }
   };
 
@@ -72,19 +72,19 @@ export default async function GuiaPage({ params }: Props) {
         '@type': 'ListItem',
         position: 1,
         name: 'Inicio',
-        item: absoluteUrl('/')
+        item: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.plastem.com.ar'
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Guías',
-        item: absoluteUrl('/guias')
+        item: `${process.env.NEXT_PUBLIC_SITE_URL}/guias`
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: guide.title,
-        item: absoluteUrl(`/guias/${slug}`)
+        item: `${process.env.NEXT_PUBLIC_SITE_URL}/guias/${slug}`
       }
     ]
   };
@@ -103,8 +103,7 @@ export default async function GuiaPage({ params }: Props) {
   };
 
   const whatsappMessage = `Hola, estaba leyendo la guía sobre "${guide.title}" y me gustaría hacer una consulta técnica/comercial.`;
-  const whatsappLink = whatsappUrl(whatsappMessage);
-  const safeContentHtml = sanitizeTrustedHtml(guide.contentHtml);
+  const whatsappLink = `https://wa.me/5491130213258?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="bg-slate-50 min-h-screen py-16 lg:py-24">
@@ -125,24 +124,9 @@ export default async function GuiaPage({ params }: Props) {
 
         {/* Header Articulo */}
         <div className="mb-12 bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
-          {guide.mainImage && (
-            <div className="relative aspect-video w-full">
-              <Image 
-                src={guide.mainImage} 
-                alt={guide.title}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-8 md:p-12 hidden md:block">
-                <div className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">Guía Técnica / {guide.category}</div>
-                <h1 className="text-3xl md:text-5xl font-black text-white mb-0 leading-tight">
-                  {guide.h1}
-                </h1>
-              </div>
-            </div>
-          )}
+          <div className="relative w-full">
+            <DynamicImage category="guias" slug={slug} priority enableZoom showCaption aspectRatio="16/9" />
+          </div>
           
           <div className="p-8 md:p-12">
             <div className="md:hidden mb-6">
@@ -165,7 +149,7 @@ export default async function GuiaPage({ params }: Props) {
                 <Link href="/#calculador" className="px-8 py-4 bg-blue-600 text-white text-center rounded-2xl font-bold uppercase tracking-widest text-sm hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20">
                   Calculadora Online
                 </Link>
-                <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-green-500 text-white text-center rounded-2xl font-bold uppercase tracking-widest text-sm hover:bg-green-600 transition-all shadow-lg shadow-green-600/20">
+                <Link href={whatsappLink} target="_blank" className="px-8 py-4 bg-green-500 text-white text-center rounded-2xl font-bold uppercase tracking-widest text-sm hover:bg-green-600 transition-all shadow-lg shadow-green-600/20">
                   WhatsApp Directo
                 </Link>
               </div>
@@ -179,7 +163,7 @@ export default async function GuiaPage({ params }: Props) {
             
             {/* Introduction HTML */}
             <article className="prose prose-slate prose-lg max-w-none bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-slate-200">
-              <div dangerouslySetInnerHTML={{ __html: safeContentHtml }} />
+              <div dangerouslySetInnerHTML={{ __html: guide.contentHtml }} />
             </article>
 
             {/* Steps Section */}
@@ -226,6 +210,8 @@ export default async function GuiaPage({ params }: Props) {
                 </div>
               </div>
             )}
+
+            <InternalLinksSection slug={slug} />
           </div>
 
           {/* Sidebar */}
@@ -240,7 +226,7 @@ export default async function GuiaPage({ params }: Props) {
                       <span className="font-bold text-sm uppercase">Ver Envíos</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                    </Link>
-                   <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 bg-green-500 rounded-xl hover:bg-green-600 transition-all group">
+                   <Link href={whatsappLink} target="_blank" className="flex items-center justify-between p-4 bg-green-500 rounded-xl hover:bg-green-600 transition-all group">
                       <span className="font-bold text-sm uppercase">Presupuesto</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                    </Link>

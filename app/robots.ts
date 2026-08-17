@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
-import { siteConfig } from '@/data/site'
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.plastem.com.ar'
 export const dynamic = 'force-static'
 
 export default function robots(): MetadataRoute.Robots {
@@ -10,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: `${siteConfig.siteUrl}/sitemap.xml`,
+    sitemap: `${baseUrl}/sitemap.xml`,
   }
 }

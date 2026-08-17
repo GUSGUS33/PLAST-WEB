@@ -1,40 +1,10 @@
 import { Metadata } from 'next';
-import type React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Target, CheckCircle2, Factory, Wrench, AlertTriangle } from 'lucide-react';
+import { InternalLinksSection } from '@/components/InternalLinksSection';
 import { segments } from '@/data/segments';
 import { solutions } from '@/data/solutions';
-import { whatsappUrl } from '@/data/site';
-
-function renderInlineLinks(text: string, linkClassName: string) {
-  const parts: React.ReactNode[] = [];
-  const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
-
-  while ((match = linkPattern.exec(text)) !== null) {
-    const [fullMatch, label, href] = match;
-    if (match.index > lastIndex) {
-      parts.push(text.slice(lastIndex, match.index));
-    }
-
-    const safeHref = href.startsWith('/') ? href : '/';
-    parts.push(
-      <Link key={`${label}-${match.index}`} href={safeHref} className={linkClassName}>
-        {label}
-      </Link>
-    );
-
-    lastIndex = match.index + fullMatch.length;
-  }
-
-  if (lastIndex < text.length) {
-    parts.push(text.slice(lastIndex));
-  }
-
-  return parts;
-}
 
 export async function generateStaticParams() {
   const segmentSlugs = Object.keys(segments).map((slug) => ({ slug }));
@@ -85,7 +55,7 @@ export default async function SolucionesSegmentoPage({ params }: Props) {
   };
 
   const whatsappMessage = `Hola PLASTEM, estoy interesado en la solución para ${data.name.toLowerCase()} y busco asesoramiento.`;
-  const whatsappLink = whatsappUrl(whatsappMessage);
+  const whatsappLink = `https://wa.me/5491130213258?text=${encodeURIComponent(whatsappMessage)}`;
 
   // PROBLEM LANDING LAYOUT
   const isSolution = 'isProblemLanding' in data;
@@ -112,10 +82,10 @@ export default async function SolucionesSegmentoPage({ params }: Props) {
               <h3 className="text-2xl font-bold mb-4">¿Querés hacerlo sin obra y sin errores?</h3>
               <p className="text-slate-400 text-sm mb-8">Elegí el camino rápido. Usá nuestro sistema de pisos flotantes y calculá exactamente lo que necesitás sin romper nada.</p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/productos/disco-soporte-baldosones#calculador-seccion" className="flex-1 py-4 px-6 bg-blue-600 text-white text-center rounded-xl font-bold uppercase tracking-widest hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30">
+                <Link href="/productos/disco-soporte-baldosones#calculadora" className="flex-1 py-4 px-6 bg-blue-600 text-white text-center rounded-xl font-bold uppercase tracking-widest hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30">
                   Ir a la Calculadora
                 </Link>
-                <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex-1 py-4 px-6 bg-green-500 text-white text-center rounded-xl font-bold uppercase tracking-widest hover:bg-green-600 transition-all shadow-lg shadow-green-500/30">
+                <Link href={whatsappLink} target="_blank" className="flex-1 py-4 px-6 bg-green-500 text-white text-center rounded-xl font-bold uppercase tracking-widest hover:bg-green-600 transition-all shadow-lg shadow-green-500/30">
                   Hablar por WhatsApp
                 </Link>
               </div>
@@ -139,7 +109,7 @@ export default async function SolucionesSegmentoPage({ params }: Props) {
                 <h4 className="font-bold text-xl text-slate-900 mb-2">¿Necesitás resolver tu proyecto rápido?</h4>
                 <p className="text-slate-600 text-sm">Mandanos fotos del problema por WhatsApp y lo vemos juntos.</p>
               </div>
-              <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" className="w-full md:w-auto py-3 px-6 bg-blue-600 text-white text-center rounded-xl font-bold uppercase tracking-widest hover:bg-blue-700 transition-colors whitespace-nowrap">
+              <Link href={whatsappLink} target="_blank" className="w-full md:w-auto py-3 px-6 bg-blue-600 text-white text-center rounded-xl font-bold uppercase tracking-widest hover:bg-blue-700 transition-colors whitespace-nowrap">
                 Consultar ahora
               </Link>
             </div>
@@ -163,10 +133,10 @@ export default async function SolucionesSegmentoPage({ params }: Props) {
                <h3 className="text-3xl font-black mb-4">¿Todo listo para avanzar?</h3>
                <p className="text-slate-300 mb-8 max-w-xl mx-auto">Calculá la cantidad exacta de discos soporte para tu proyecto en 1 minuto.</p>
                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/productos/disco-soporte-baldosones#calculador-seccion" className="py-4 px-8 bg-blue-600 text-white rounded-xl font-bold uppercase tracking-widest hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30">
+                  <Link href="/productos/disco-soporte-baldosones#calculadora" className="py-4 px-8 bg-blue-600 text-white rounded-xl font-bold uppercase tracking-widest hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30">
                     Calcular mi proyecto
                   </Link>
-                  <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" className="py-4 px-8 bg-green-500 text-white rounded-xl font-bold uppercase tracking-widest hover:bg-green-600 transition-colors shadow-lg shadow-green-500/30">
+                  <Link href={whatsappLink} target="_blank" className="py-4 px-8 bg-green-500 text-white rounded-xl font-bold uppercase tracking-widest hover:bg-green-600 transition-colors shadow-lg shadow-green-500/30">
                     Recibir presupuesto
                   </Link>
                </div>
@@ -175,18 +145,8 @@ export default async function SolucionesSegmentoPage({ params }: Props) {
         </section>
 
         <section className="py-16 bg-white border-t border-slate-200">
-           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Continúe descubriendo</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 <Link href="/guias/como-instalar-discos-soporte" className="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm hover:border-blue-500 transition-colors">
-                    <span className="font-bold text-slate-800 block mb-2">Leer guía de instalación</span>
-                    <span className="text-slate-500 text-sm">Paso a paso para armar terrazas transitables en seco.</span>
-                 </Link>
-                 <Link href="/envios/buenos-aires" className="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm hover:border-blue-500 transition-colors">
-                    <span className="font-bold text-slate-800 block mb-2">Envíos y Logística</span>
-                    <span className="text-slate-500 text-sm">Conozca cómo entregamos en Buenos Aires y todo el país.</span>
-                 </Link>
-              </div>
+           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <InternalLinksSection slug={slug} />
            </div>
         </section>
       </div>
@@ -225,7 +185,7 @@ export default async function SolucionesSegmentoPage({ params }: Props) {
               >
                 {data.primaryCta ? data.primaryCta.text : 'Ver Producto'}
               </Link>
-              <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex-1 py-4 px-6 bg-green-500 text-white text-center rounded-xl font-bold uppercase tracking-widest hover:bg-green-600 transition-all shadow-lg shadow-green-500/30">
+              <Link href={whatsappLink} target="_blank" className="flex-1 py-4 px-6 bg-green-500 text-white text-center rounded-xl font-bold uppercase tracking-widest hover:bg-green-600 transition-all shadow-lg shadow-green-500/30">
                 Hablar por WhatsApp
               </Link>
             </div>
@@ -242,7 +202,9 @@ export default async function SolucionesSegmentoPage({ params }: Props) {
               {data.problems.map((problem: string, i: number) => (
                 <li key={i} className="flex gap-3 text-slate-600 leading-relaxed text-sm">
                   <span className="text-red-500 font-bold shrink-0">X</span> 
-                  <span>{renderInlineLinks(problem, 'text-blue-600 underline')}</span>
+                  <span dangerouslySetInnerHTML={{ 
+                    __html: problem.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-blue-600 underline">$1</a>') 
+                  }} />
                 </li>
               ))}
             </ul>
@@ -253,7 +215,9 @@ export default async function SolucionesSegmentoPage({ params }: Props) {
               {data.benefits.map((benefit: string, i: number) => (
                 <li key={i} className="flex gap-3 text-blue-100 leading-relaxed text-sm">
                   <CheckCircle2 className="w-5 h-5 text-white shrink-0" /> 
-                  <span>{renderInlineLinks(benefit, 'text-white underline decoration-white/30')}</span>
+                  <span dangerouslySetInnerHTML={{ 
+                    __html: benefit.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-white underline decoration-white/30">$1</a>') 
+                  }} />
                 </li>
               ))}
             </ul>
@@ -310,6 +274,12 @@ export default async function SolucionesSegmentoPage({ params }: Props) {
               Iniciar Cotización
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white border-t border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <InternalLinksSection slug={slug} />
         </div>
       </section>
 

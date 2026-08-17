@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import { siteConfig, absoluteUrl } from '@/data/site';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.siteUrl),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.plastem.com.ar'),
   title: {
     default: 'PLASTEM | Discos Soporte para Baldosones y Pisos Flotantes',
     template: '%s | PLASTEM',
@@ -26,41 +27,23 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: siteConfig.name,
-    description: siteConfig.description,
-    image: absoluteUrl('/logo.png'),
-    '@id': siteConfig.siteUrl,
-    url: siteConfig.siteUrl,
-    telephone: siteConfig.phone.e164,
+    name: 'PLASTEM',
+    description: 'Fábrica de discos soporte para baldosones y pisos flotantes exteriores.',
+    image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.plastem.com.ar'}/logo.png`,
+    '@id': process.env.NEXT_PUBLIC_SITE_URL || 'https://www.plastem.com.ar',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.plastem.com.ar',
+    telephone: '+5491130213258',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: siteConfig.location.streetAddress,
-      addressLocality: siteConfig.location.locality,
-      addressRegion: siteConfig.location.region,
-      postalCode: siteConfig.location.postalCode,
-      addressCountry: siteConfig.location.country
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: siteConfig.location.latitude,
-      longitude: siteConfig.location.longitude
-    },
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: siteConfig.openingHours.days,
-      opens: siteConfig.openingHours.opens,
-      closes: siteConfig.openingHours.closes
+      addressLocality: 'Turdera / Temperley',
+      addressRegion: 'Buenos Aires',
+      addressCountry: 'AR'
     }
   };
 
   return (
     <html lang="es" className="scroll-smooth">
-      <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
-        <Script
-          id="schema-ld"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+      <body className={`${inter.className} min-h-screen flex flex-col bg-slate-50 text-slate-900`}>
         <Navbar />
         <main className="flex-grow">
           {children}

@@ -1,35 +1,34 @@
 # PLASTEM Web
 
-Sitio web oficial de PLASTEM para presentar productos, soluciones técnicas, guías de instalación y cobertura de envíos para discos soporte de baldosones y pisos flotantes exteriores.
+Sitio web oficial de PLASTEM para discos soporte para baldosones y soluciones para pisos flotantes.
 
-## Stack Técnico
+## Tecnologías
 
-- Next.js App Router
-- React
-- TypeScript
-- Tailwind CSS
-- Exportación estática
+* Next.js
+* TypeScript
+* Tailwind CSS
+* Exportación estática
 
-## Desarrollo Local
+## Desarrollo local
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abrir:
+Abrir en el navegador:
 
 ```txt
 http://localhost:3000
 ```
 
-## Build
+## Build de producción
 
 ```bash
 npm run build
 ```
 
-El proyecto está configurado con `output: "export"` y genera el sitio estático en:
+El proyecto está configurado para generar una exportación estática en la carpeta:
 
 ```txt
 dist/
@@ -37,9 +36,9 @@ dist/
 
 ## Deploy en Hostinger
 
-El deploy recomendado es subir el contenido generado dentro de `dist/` al directorio `public_html` de Hostinger.
+Como el sitio es estático, se puede desplegar subiendo el contenido de la carpeta `dist/` al directorio `public_html` de Hostinger.
 
-Si se conecta desde GitHub, usar:
+También puede conectarse desde GitHub y configurar:
 
 ```txt
 Install command: npm install
@@ -47,44 +46,6 @@ Build command: npm run build
 Publish directory: dist
 ```
 
-## Variables de Entorno Futuras
-
-Actualmente no se requieren claves privadas ni integraciones externas.
-
-Variable pública prevista:
-
-```txt
-NEXT_PUBLIC_SITE_URL="https://www.plastem.com.ar"
-```
-
-Solo debe contener la URL pública de producción. No guardar secretos en variables `NEXT_PUBLIC_*`.
-
-## Checklist Pre-Deploy
-
-- Confirmar que no existan archivos `.env` o `.env.local` en el commit.
-- Confirmar que `node_modules/`, `.next/`, `dist/`, `.npm-cache/` y logs no estén versionados.
-- Ejecutar validaciones locales.
-- Revisar que las rutas principales carguen correctamente.
-- Revisar `sitemap.xml` y `robots.txt` generados.
-- Confirmar que las imágenes usadas sean assets propios o aprobados.
-
-## Comandos de Validación
-
-```bash
-npm install
-npm run lint
-npm run build
-npm audit
-```
-
 ## Seguridad
 
-No subir al repositorio:
-
-- `.env`
-- `.env.local`
-- `node_modules/`
-- `.next/`
-- `dist/`
-- `.npm-cache/`
-- logs (`*.log`)
+No subir archivos `.env`, `.env.local`, `node_modules`, `.next`, `dist` ni `out`.

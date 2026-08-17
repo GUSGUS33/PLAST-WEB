@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import { cities } from '@/data/cities';
+import { getPublishedGeoLocations } from '@/data/geo';
+import { siteConfig } from '@/data/site';
 import { MapPin, Truck, ShieldCheck, Clock, ArrowRight } from 'lucide-react';
+
 import { Metadata } from 'next';
-import { whatsappUrl } from '@/data/site';
 
 export const metadata: Metadata = {
   title: 'Envíos a Todo el País | PLASTEM',
@@ -10,7 +11,11 @@ export const metadata: Metadata = {
 };
 
 export default function EnviosPage() {
-  const provinces = Array.from(new Set(Object.values(cities).map(c => c.province))).sort();
+  const published = getPublishedGeoLocations();
+  
+  const getProvinceName = (g: typeof published[0]) => g.parentProvinceName || g.name;
+  
+  const provinces = Array.from(new Set(published.map(getProvinceName))).sort();
 
   return (
     <div className="bg-slate-50 min-h-screen pt-24 pb-16">
@@ -53,7 +58,7 @@ export default function EnviosPage() {
             <div key={province} className="space-y-6">
               <h2 className="text-2xl font-bold text-slate-800 border-b border-slate-200 pb-2">{province}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {Object.values(cities).filter(c => c.province === province).map(city => (
+                {published.filter(g => getProvinceName(g) === province).map(city => (
                   <Link 
                     key={city.slug}
                     href={`/envios/${city.slug}`}
@@ -74,11 +79,13 @@ export default function EnviosPage() {
         <div className="mt-20 bg-brand-dark rounded-3xl p-8 md:p-12 text-white text-center flex flex-col items-center">
           <h2 className="text-3xl font-bold mb-4 uppercase">¿Su ciudad no figura en la lista?</h2>
           <p className="text-slate-300 mb-8 max-w-2xl text-lg leading-relaxed">
-            Realizamos envíos a cualquier punto del país. Trabajamos con Vía Cargo y los principales transportes de cada provincia.
+            {siteConfig.globalLogisticsOptions?.viaCargo?.enabled
+              ? `Despachamos hacia cualquier punto del país. ${siteConfig.globalLogisticsOptions.viaCargo.standardDisclaimer}`
+              : 'Despachamos hacia cualquier punto del país mediante expresos de carga o transportes acordados previamente con el cliente.'}
           </p>
           <Link 
-            href={whatsappUrl('Hola, quisiera consultar por envío a mi localidad.')} 
-            target="_blank" rel="noopener noreferrer"
+            href="https://wa.me/5491130213258?text=Hola,%20quisiera%20consultar%20por%20envío%20a%20mi%20localidad." 
+            target="_blank"
             className="px-10 py-4 bg-white text-brand-dark rounded-xl font-bold uppercase tracking-widest transition-all hover:bg-slate-100 flex items-center gap-2"
           >
             Consultar Logística A medida <Truck className="w-5 h-5" />

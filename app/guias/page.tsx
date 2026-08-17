@@ -3,11 +3,13 @@ import Image from 'next/image';
 import { guides } from '@/data/guides';
 import { BookOpen, Calculator, Layers, Info, ArrowRight, Settings } from 'lucide-react';
 import { Metadata } from 'next';
-import { whatsappUrl } from '@/data/site';
 
 export const metadata: Metadata = {
   title: 'Guías Técnicas y de Instalación | PLASTEM',
   description: 'Todo lo que necesita saber sobre la instalación, cálculo y ventajas de los discos soporte para baldosones y pisos flotantes exteriores.',
+  alternates: {
+    canonical: '/guias',
+  },
 };
 
 export default function GuiasPage() {
@@ -83,7 +85,7 @@ export default function GuiasPage() {
 
         <div className="mt-24 relative rounded-[3rem] p-8 md:p-16 text-white text-center shadow-2xl overflow-hidden">
           <div className="absolute inset-0 bg-brand-dark" />
-          <div className="absolute inset-0 bg-[url('/placeholders/factory-floor.svg')] opacity-10 mix-blend-overlay" />
+          <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/factory/1200/800')] opacity-10 mix-blend-overlay" />
           
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl font-black mb-6 uppercase italic">¿No encuentra lo que busca?</h2>
@@ -92,8 +94,8 @@ export default function GuiasPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link 
-                href={whatsappUrl()} 
-                target="_blank" rel="noopener noreferrer"
+                href="https://wa.me/5491130213258" 
+                target="_blank"
                 className="px-10 py-5 bg-green-500 hover:bg-green-600 text-white rounded-2xl font-bold uppercase tracking-widest transition-all shadow-xl shadow-green-500/30"
               >
                 Consultar por WhatsApp
