@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev -p 3000 -H 0.0.0.0",
-    "build": "next build && echo '=== CONFIG ORIGINAL ===' && cat next.config.mjs && echo '=== CONFIGS NEXT EN RAIZ ===' && ls -la *next.config.mjs 2>/dev/null || true; echo '=== CONTENIDO CONFIGS ==='; for f in *next.config.mjs; do echo \"===== $f =====\"; cat \"$f\"; done; echo '=== DIRECTORIOS ==='; ls -ld out .next .next/standalone 2>/dev/null || true",
+    "build": "next build && echo '=== STANDALONE DIAGNOSTICO ===' && echo '=== SERVER.JS ===' && (ls -la .next/standalone/server.js 2>/dev/null || echo 'SERVER.JS NO EXISTE') && echo '=== CONTENIDO STANDALONE ===' && find .next/standalone -maxdepth 3 -type f -print 2>/dev/null | sort && echo '=== DIRECTORIOS STANDALONE ===' && find .next/standalone -maxdepth 3 -type d -print 2>/dev/null | sort",
     "lint": "tsc --noEmit"
   },
   "dependencies": {
