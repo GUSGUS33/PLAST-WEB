@@ -31,7 +31,7 @@ export function ProductCalculator({ theme = 'dark', defaultCity = '' }: Props) {
     '40x40': { factor: 6.25, label: '40×40 cm — 6,25 soportes/m²', name: '40×40 cm' },
     '30x60': { factor: 5.56, label: '30×60 cm — 5,56 soportes/m²', name: '30×60 cm' },
     '40x60': { factor: 4.17, label: '40×60 cm — 4,17 soportes/m²', name: '40×60 cm' },
-    '50x60': { factor: 4.00, label: '50×60 cm — 4,00 soportes/m²', name: '50×60 cm' },
+    '50x50': { factor: 4.00, label: '50×50 cm — 4,00 soportes/m²', name: '50×50 cm' },
     '60x60': { factor: 2.78, label: '60×60 cm — 2,78 soportes/m²', name: '60×60 cm' },
   };
 
@@ -135,7 +135,7 @@ export function ProductCalculator({ theme = 'dark', defaultCity = '' }: Props) {
               <option value="40x40">40×40 cm (6,25 soportes/m²)</option>
               <option value="30x60">30×60 cm (5,56 soportes/m²)</option>
               <option value="40x60">40×60 cm (4,17 soportes/m²)</option>
-              <option value="50x60">50×60 cm (4,00 soportes/m²)</option>
+              <option value="50x50">50×50 cm (4,00 soportes/m²)</option>
               <option value="60x60">60×60 cm (2,78 soportes/m²)</option>
             </select>
           </div>
