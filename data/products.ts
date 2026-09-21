@@ -48,7 +48,7 @@ export const products: Record<string, ProductData> = {
       { label: 'Colores disponibles', value: 'Negro y Gris' },
       { label: 'Capacidad', value: 'Apilables hasta 3-4 unidades' },
       { label: 'Uso recomendado', value: 'Apto para terrazas, patios y techos transitables' },
-      { label: 'Compatibilidad Baldosones', value: '30x30, 40x40, 50x50, 40x60, 60x60 cm' },
+      { label: 'Compatibilidad Baldosones', value: '30x30, 40x40, 30x60, 40x60, 50x60, 60x60 cm' },
       { label: 'Superficies', value: 'Membrana asfáltica, líquida, geotextil, carpeta' }
     ],
     uses: 'Apto para terrazas, patios y techos transitables.',

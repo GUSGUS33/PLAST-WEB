@@ -211,7 +211,7 @@ export default async function ProductPage({ params }: Props) {
               <div className="bg-slate-800/50 p-10 rounded-3xl border border-slate-700">
                 <h3 className="text-2xl font-black uppercase italic text-blue-400 mb-8 border-b border-slate-700 pb-4 leading-none">Baldosones Compatibles</h3>
                 <ul className="space-y-4">
-                  {['30x30 cm', '40x40 cm', '50x50 cm', '40x60 cm', '60x60 cm'].map((item, i) => (
+                  {['30x30 cm', '40x40 cm', '30x60 cm', '40x60 cm', '50x60 cm', '60x60 cm'].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 font-bold text-lg">
                       <CheckCircle2 className="w-6 h-6 text-green-500" />
                       {item}

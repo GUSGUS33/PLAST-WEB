@@ -40,6 +40,8 @@ export default async function GuiaPage({ params }: Props) {
     notFound();
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://plastem.com.ar';
+
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -54,13 +56,13 @@ export default async function GuiaPage({ params }: Props) {
       name: 'PLASTEM',
       logo: {
         '@type': 'ImageObject',
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/logo.png`
+        url: `${siteUrl}/logo.png`
       }
     },
     datePublished: '2025-01-01',
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${process.env.NEXT_PUBLIC_SITE_URL}/guias/${slug}`
+      '@id': `${siteUrl}/guias/${slug}`
     }
   };
 
@@ -72,19 +74,19 @@ export default async function GuiaPage({ params }: Props) {
         '@type': 'ListItem',
         position: 1,
         name: 'Inicio',
-        item: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.plastem.com.ar'
+        item: siteUrl
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Guías',
-        item: `${process.env.NEXT_PUBLIC_SITE_URL}/guias`
+        item: `${siteUrl}/guias`
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: guide.title,
-        item: `${process.env.NEXT_PUBLIC_SITE_URL}/guias/${slug}`
+        item: `${siteUrl}/guias/${slug}`
       }
     ]
   };

@@ -4,7 +4,7 @@ import { products } from '@/data/products';
 import { solutions } from '@/data/solutions';
 import { guides } from '@/data/guides';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.plastem.com.ar';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://plastem.com.ar';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -36,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = Array.from(new Set([...staticRoutes, ...geoRoutes, ...guideRoutes]));
 
   return routes.map((route) => ({
-    url: `${baseUrl}${route}`,
+    url: route === '' ? baseUrl : `${baseUrl}${route}/`,
     lastModified: new Date(),
     changeFrequency: route === '' ? 'weekly' : 'monthly',
     priority: route === '' ? 1 : 0.8,

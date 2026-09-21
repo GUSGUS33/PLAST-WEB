@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Phone, Mail } from 'lucide-react';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function Navbar() {
   const navLinks = [
@@ -33,10 +34,10 @@ export default function Navbar() {
       <nav key="main-nav" className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <div key="nav-logo-wrap" className="flex items-center gap-2">
           <Link key="nav-logo" href="/" className="flex items-center gap-3">
-            <div key="nav-logo-box" className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand text-white font-bold text-xl">
-              P
-            </div>
-            <span key="nav-logo-txt" className="text-2xl font-extrabold tracking-tight text-slate-800">PLASTEM</span>
+            <BrandLogo
+              boxClassName="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white font-bold text-xl"
+              textClassName="text-2xl font-extrabold tracking-tight text-slate-800"
+            />
           </Link>
         </div>
         

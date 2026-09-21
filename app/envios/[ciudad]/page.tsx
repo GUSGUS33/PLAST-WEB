@@ -72,19 +72,19 @@ export default async function CiudadPage({ params }: Props) {
         '@type': 'ListItem',
         position: 1,
         name: 'Inicio',
-        item: 'https://www.plastem.com.ar/'
+        item: 'https://plastem.com.ar/'
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Envíos',
-        item: 'https://www.plastem.com.ar/envios'
+        item: 'https://plastem.com.ar/envios'
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: city.name,
-        item: `https://www.plastem.com.ar/envios/${city.slug}`
+        item: `https://plastem.com.ar/envios/${city.slug}`
       }
     ]
   };

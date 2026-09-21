@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function Footer() {
   return (
@@ -7,10 +8,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white font-bold text-xl">
-                P
-              </div>
-              <span className="text-2xl font-extrabold tracking-tight text-white">PLASTEM</span>
+              <BrandLogo
+                boxClassName="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white font-bold text-xl"
+                textClassName="text-2xl font-extrabold tracking-tight text-white"
+                imageClassName="h-10 w-auto max-h-10 object-contain brightness-0 invert"
+              />
             </Link>
             <p className="mb-6 text-sm text-slate-400 max-w-xs leading-relaxed">
               Fábrica de discos soporte para baldosones, pisos flotantes exteriores y terrazas transitables. 

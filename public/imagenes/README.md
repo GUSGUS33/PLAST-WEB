@@ -39,7 +39,10 @@ Imágenes generales del sitio, hero, fábrica y empresa:
 - `galeria-1.jpg`
 - `galeria-2.jpg`
 - `galeria-3.jpg`
-- `logo-plastem.png`
+
+## 6. Logo Corporativo (`/public/imagenes/logo/`)
+Guarda aquí el isotipo o logotipo de la empresa:
+- `plastem-logo.svg` (se cargará automáticamente en la cabecera del Navbar y en el Footer con fallback al monograma y texto 'PLASTEM' en caso de no existir o fallar).
 
 ---
 
